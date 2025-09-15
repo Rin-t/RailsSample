@@ -46,3 +46,6 @@
 # Node
 node_modules/
 yarn-error.log
+
+# Claude settings
+.claude/
