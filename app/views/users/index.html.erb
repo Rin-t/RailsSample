@@ -1,0 +1,32 @@
+<div style="text-align: center; padding: 50px;">
+  <h1>登録済みユーザー一覧</h1>
+
+  <% if flash[:notice] %>
+    <div style="background: #d4edda; color: #155724; padding: 12px; border-radius: 4px; margin-bottom: 20px;">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <table style="margin: 20px auto; border-collapse: collapse; width: 80%; max-width: 600px;">
+    <thead>
+      <tr style="background: #f8f9fa;">
+        <th style="border: 1px solid #dee2e6; padding: 12px;">ID</th>
+        <th style="border: 1px solid #dee2e6; padding: 12px;">名前</th>
+        <th style="border: 1px solid #dee2e6; padding: 12px;">年齢</th>
+        <th style="border: 1px solid #dee2e6; padding: 12px;">登録日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td style="border: 1px solid #dee2e6; padding: 12px;"><%= user.id %></td>
+          <td style="border: 1px solid #dee2e6; padding: 12px;"><%= user.name %></td>
+          <td style="border: 1px solid #dee2e6; padding: 12px;"><%= user.age %></td>
+          <td style="border: 1px solid #dee2e6; padding: 12px;"><%= user.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "ホームに戻る", root_path, class: "btn btn-primary" %>
+</div>

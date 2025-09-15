@@ -2,5 +2,22 @@
   <h1>ホームページ</h1>
   <p>Railsアプリケーションへようこそ！</p>
 
-  <%= link_to "次へ", "/first-page", class: "btn btn-primary" %>
+  <div style="margin: 30px auto; max-width: 400px; background: #f8f9fa; padding: 30px; border-radius: 10px;">
+    <h2>ユーザー登録</h2>
+    <%= form_with model: @user, url: users_create_path, local: true do |form| %>
+      <div style="margin-bottom: 20px;">
+        <%= form.label :name, "名前", style: "display: block; margin-bottom: 5px;" %>
+        <%= form.text_field :name, style: "width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" %>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <%= form.label :age, "年齢", style: "display: block; margin-bottom: 5px;" %>
+        <%= form.number_field :age, style: "width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" %>
+      </div>
+
+      <%= form.submit "保存", class: "btn btn-primary", style: "width: 100%;" %>
+    <% end %>
+  </div>
+
+  <%= link_to "ユーザー一覧へ", "/first-page", class: "btn btn-secondary" %>
 </div>
