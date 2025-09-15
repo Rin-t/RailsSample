@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   post "users/create"  # POSTに変更（フォーム送信用）
   get "users/index"
+  delete "users/:id", to: "users#destroy", as: :user
   get "home/index"
   get "first-page", to: "home#first_page"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
