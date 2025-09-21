@@ -21,11 +21,20 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    # 全ユーザーを取得
+    field :users, [Types::UserType], null: false,
+      description: "全ユーザーを取得"
+    def users
+      User.all
+    end
+
+    # 特定のユーザーを取得
+    field :user, Types::UserType, null: true,
+      description: "IDで特定のユーザーを取得" do
+      argument :id, ID, required: true
+    end
+    def user(id:)
+      User.find_by(id: id)
     end
   end
 end
